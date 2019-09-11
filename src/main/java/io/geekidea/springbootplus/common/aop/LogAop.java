@@ -141,7 +141,7 @@ public class LogAop {
         Object result = joinPoint.proceed();
         Object responseResult = null;
         try{
-            if (responseResult != null && responseResult instanceof ApiResult){
+            if (result != null && result instanceof ApiResult){
                 ApiResult apiResult = (ApiResult) responseResult;
                 int code = apiResult.getCode();
                 if (code != ApiCode.SUCCESS.getCode()){
