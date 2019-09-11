@@ -124,11 +124,7 @@ public class LogAop {
             map.put("x-auth-token",request.getHeader("x-auth-token"));
 
             String requestInfo = null;
-            try {
-                requestInfo = JSON.toJSONString(map);
-            } catch (Exception e) {
-
-            }
+            requestInfo = JSON.toJSONString(map);
             log.info(AnsiUtil.getAnsi(Ansi.Color.GREEN,"requestInfo:"+requestInfo));
 
         } catch (Exception e) {
