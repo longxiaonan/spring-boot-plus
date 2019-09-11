@@ -139,15 +139,14 @@ public class LogAop {
 
         // 执行目标方法,获得返回值
         Object result = joinPoint.proceed();
-        Object responseResult = null;
         try{
             if (result != null && result instanceof ApiResult){
-                ApiResult apiResult = (ApiResult) responseResult;
+                ApiResult apiResult = (ApiResult) result;
                 int code = apiResult.getCode();
                 if (code != ApiCode.SUCCESS.getCode()){
-                    log.error(AnsiUtil.getAnsi(Ansi.Color.RED,"responseResult:"+JSON.toJSONString(responseResult)));
+                    log.error(AnsiUtil.getAnsi(Ansi.Color.RED,"responseResult:"+JSON.toJSONString(apiResult)));
                 }else{
-                    log.info(AnsiUtil.getAnsi(Ansi.Color.BLUE,"responseResult:"+JSON.toJSONString(responseResult)));
+                    log.info(AnsiUtil.getAnsi(Ansi.Color.BLUE,"responseResult:"+JSON.toJSONString(apiResult)));
                 }
             }
         }catch (Exception e){
